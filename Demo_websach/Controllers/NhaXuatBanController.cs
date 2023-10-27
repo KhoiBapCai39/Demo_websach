@@ -18,7 +18,7 @@ namespace Demo_websach.Controllers
 
             return PartialView(db.Publishers.OrderBy(x => x.PublisherName).ToList());  //orderby dùng để sort   
         }
-        public ActionResult GetAllByNXB(int publisherId)
+        public ActionResult GetAllByNXB(int publisherId) //lấy các sách mà nhà xuất bản đó phát hành
         {
             // Sử dụng Linq để lấy dữ liệu
             var listBooks = db.Books.Where(p => p.Publisher.PublisherID == publisherId).ToList();// Where(p => p.GenreID == genreId): Lambda Expression
