@@ -1,0 +1,47 @@
+﻿@using Demo_websach.Models;
+@model List<Book>
+
+<link href="~/Content/TrangChuSach.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "LayDsTheoChuDe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Các quyển sách - truyện thuộc thể loại này: </h3>
+<div id="divBody">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <div id="AnhBia">
+                <a href="@Url.Action("XemChiTiet", "Sach", new {MaSach = item.BookID})"><img style="margin-left:70px" src="@Url.Content("~/HinhAnhSP/" + item.imgBOOK)" width="120" height="120" /></a>
+            </div>
+            <div id="ThongTin">
+
+                @*Miêu tả thông tin sách như tên và giá,...*@
+                @*Nếu tên sách dài hơn 35 kí tự thì tên sách chỉ lấy từ ksi tự 0 -> 34, còn lại sẽ hiển thị bởi dấu ...*@
+                @if (item.BookName.Length < 35)
+                {
+                    <div style="text-align:center" id="TenSach">
+                        <a href="@Url.Action("XemChiTiet", "Sach", new {MaSach = item.BookID})">@item.BookName</a>
+                    </div>
+                }
+                else
+                {
+                    <div id="TenSach" title="@item.BookName">@item.BookName.Substring(0, 35) ...</div>
+                }
+
+                <div id="DonGia" style="color:orange; text-align:center">
+                    <font color="Green">Giá: @item.Gia đ</font>
+                </div>
+            </div>
+        </div>
+
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+</div>

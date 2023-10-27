@@ -1,0 +1,35 @@
+﻿div#SanPham{
+    float:left;
+    width:300px;
+    margin-left:10px;
+    margin-top:0;
+    
+}
+
+/*Div hinh anh cua sp*/
+div#SanPham img{
+    width:150px;
+    height:200px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+#ThongTin{
+    border:1px solid;
+    border-color: rgba(0,0,0,2);
+    padding: 0 15px 15px 15px;
+    font-family: "Segoe UI";
+    font-size:10pt;
+    font-weight:600;
+}
+
+/*Div ten sach*/
+#TenSach{
+    padding: 5px;
+    
+}
+
+#divBody {
+    margin-left:10px;
+
+}

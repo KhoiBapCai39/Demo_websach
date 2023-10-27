@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = ""; //nếu muốn dựng layout gốc là _Layout.cshtml thì xài. Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/dangnhapcss.css" rel="stylesheet" />   
+
+<h3>Đăng nhập</h3>
+<h1>@ViewBag.ThongBao</h1>
+
+@using (Html.BeginForm())
+{
+    <div class="imgcontainer">
+        <img src="~/Content/imgbook/HACK5.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <label for="uname"><b>Email</b></label>
+        <input type="text" placeholder="Nhập Email" name="txtEmail" required>
+        <br />
+        <label for="psw"><b>Mật khẩu</b></label>
+        <input type="password" placeholder="Nhập mật khẩu" name="txtMatKhau" required>
+
+        <button type="submit" id="btnSubmit" name="btnSubmit">Đăng nhập</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Ghi nhớ cho tôi ở lần sau
+        </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <a href="@Url.Action("DangKy", "NguoiDung")"><button type="button" class="cancelbtn">Đăng kí</button></a>
+        <span class="psw"><a href="#">Quên mật khẩu?</a></span>
+    </div>
+
+}

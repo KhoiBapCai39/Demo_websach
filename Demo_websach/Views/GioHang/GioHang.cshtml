@@ -1,0 +1,62 @@
+﻿@using Demo_websach.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>GioHang</h2>
+<table>
+    <tr>
+        <td>Mã Sách </td>
+
+        <td>Tên Sách </td>
+
+        <td>Ảnh bìa </td>
+
+        <td>Đơn giá </td>
+
+        <td>Số lượng </td>
+
+        <td>Thành tiền </td>
+    </tr>
+
+
+    @*Biến model là 1 list, muốn duyệt tất cả các phần tử trong cái list thì dùng vòng lặp foreach*@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.imaSach </td>
+
+            <td>@item.sTenSach</td>
+
+            <td><a href="@Url.Action("XemChiTiet", "Sach", new { @MaSach = item.imaSach })"><img src="@Url.Content("~/HinhAnhSP/" + item.sAnhBia)" width="70" height="70" /></a></td>
+
+            @*Truyền đối số phân giá ra 3 số 0 thì 1 dấu phẩy*@
+            <td>@String.Format("{0:0,0}", @item.dDonGia) VNĐ</td>
+
+            <td>@item.iSoLuong</td>
+
+            <td>@String.Format("{0:0,0}", @item.dThanhTien) VNĐ</td>
+
+        </tr>
+
+    }
+    <tr>
+        <td colspan="6" style="text-align:right; color:cornflowerblue">
+            @Html.ActionLink("Chỉnh sửa giỏ hàng", "SuaGioHang")
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="6" style="text-align:right; color:cornflowerblue">
+            @using(Html.BeginForm("DatHang", "GioHang"))
+            {
+                <input type="submit" value="Đặt hàng" />
+            }
+        </td>
+    </tr>
+</table>
+    

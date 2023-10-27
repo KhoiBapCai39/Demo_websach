@@ -1,0 +1,11 @@
+﻿@using Demo_websach.Models
+@model List<Genre>
+
+<h3>Danh mục các thể loại: </h3
+@foreach (var item in Model)
+{
+    <!-- Mini Post -->
+    <article class="mini-post">
+            <h3 style="text-align:center; margin-top:5px" ><a style="text-align:center" href="@Url.Action("LayDsTheoChuDe", "TheLoai", new {genreId = item.GenreID.ToString()})">@item.GenreName</a></h3>
+    </article>
+ }

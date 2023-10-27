@@ -1,0 +1,12 @@
+﻿@using Demo_websach.Models;
+@model List<Publisher>
+
+<h2>Nhà xuất bản</h2>
+@foreach (var item in Model)
+{
+        <div><a href="@Url.Action("GetAllByNXB", "NhaXuatBan", new {publisherId = item.PublisherID})">@item.PublisherName</a></div>
+   
+}
+
+
+

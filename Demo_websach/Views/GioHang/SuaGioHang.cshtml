@@ -1,0 +1,60 @@
+﻿@using Demo_websach.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "Sửa Giỏ Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>GioHang</h2>
+<table>
+    <tr>
+        <td>Mã Sách </td>
+
+        <td>Tên Sách </td>
+
+        <td>Ảnh bìa </td>
+
+        <td>Đơn giá </td>
+
+        <td>Số lượng </td>
+
+        <td>Thành tiền </td>
+    </tr>
+
+
+    @*Biến model là 1 list, muốn duyệt tất cả các phần tử trong cái list thì dùng vòng lặp foreach*@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.imaSach </td>
+
+            <td>@item.sTenSach</td>
+
+            <td><img src="@Url.Content("~/HinhAnhSP/" + item.sAnhBia)" width="70" height="70" /></td>
+
+            @*Truyền đối số phân giá ra 3 số 0 thì 1 dấu phẩy*@
+            <td>@String.Format("{0:0,0}", @item.dDonGia) VNĐ</td>
+
+            @*tạo 1 trang begin form để chúng ta gửi đến nó 1 tham số mã sách, số lượng*@
+            @*chỉnh sửa giỏ hàng gọi về action CapNhatGioHang*@
+            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMaSP = item.imaSach }))
+            {
+
+                <td>@Html.TextBox("txtSoLuong", item.iSoLuong) </td>
+
+                <td>@String.Format("{0:0,0}", @item.dThanhTien) VNĐ</td>
+                <td>
+                    <input type="submit" value="Cập nhật" />
+                    <br />
+                    @*Xóa giỏ hàng gọi về action XoaGioHang*@
+                    @Html.ActionLink("Xóa giỏ hàng", "XoaGioHang", new { @iMaSP = item.imaSach })
+                </td>
+            }
+            <td></td>
+        </tr>
+
+
+    }
+</table>

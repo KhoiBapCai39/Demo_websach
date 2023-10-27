@@ -1,0 +1,30 @@
+﻿@using Demo_websach.Models;
+@*Định nghĩa biến model*@
+@model List<Book> 
+
+<h2>Sách mới bán chạy nhất</h2>
+@{
+    foreach (var item in Model)
+    {
+        
+       <div>
+             <img src="@Url.Content("~/HinhAnhSP/"+item.imgBOOK)" width="140" height="140"  alt="Image" />
+             @if(item.BookName.Length > 35)
+              {
+                    <p><strong title="@item.BookName">@item.BookName.Substring(0,35)... </strong><a href="@Url.Action("XemChiTiet", new {@MaSach=item.BookID})">Xem thêm...</a><br /></p>
+             }
+             else
+             {
+                 <p><strong title="@item.BookName">@item.BookName</strong><br /><a href="@Url.Action("XemChiTiet", new {@MaSach=item.BookID})">Xem thêm...</a></p>
+
+                <div class="clear"></div>
+             }
+
+       </div>
+      
+    }
+}
+
+<ul class="posts">
+
+</ul>

@@ -1,0 +1,32 @@
+﻿#NoiDung {
+    text-align: center;
+    background-color: #f7f7f7; /* Màu nền nhạt */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px; /* Góc bo tròn */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng mềm mại */
+}
+
+    #NoiDung:hover {
+        background-color: burlywood; /* Màu nền khi di chuột qua */
+        transform: scale(1.05); /* Phóng to khi di chuột qua */
+    }
+
+    #NoiDung p {
+        margin: 10px 0;
+        font-size: 16px;
+        line-height: 1.4;
+        color: #333; /* Màu chữ tối */
+    }
+
+        #NoiDung p:first-child {
+            font-size: 24px; /* Tựa đề lớn hơn */
+            font-weight: bold;
+            color: #007acc; /* Màu chữ mục tiêu */
+        }
+
+        #NoiDung p:last-child {
+            font-style: italic; /* Chữ in nghiêng ở chữ ký */
+            color: #555; /* Màu chữ ký */
+        }

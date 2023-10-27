@@ -1,0 +1,47 @@
+﻿
+.DangKyDangNhap a:hover {
+    text-decoration: none;
+    color: dodgerblue;
+    text-indent: -20px;
+}
+
+div#toantrang{
+    position:relative;
+}
+
+/*css cho tìm kiếm*/
+
+.divHinhanhTimkiem {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+}
+
+.search-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    transition: margin 0.3s ease;
+}
+
+    .search-box:focus {
+        margin-right: 0;
+        width: 200px; /* Điều chỉnh chiều rộng khi ô tìm kiếm được tập trung */
+        border-radius: 10px;
+    }
+
+.search-button {
+   font-size:10px;
+   margin-right:40px;
+   border-radius:10px;
+}
+
+#slider{
+    float:unset;
+    width: 800px;
+    height: 360px;
+
+}
+
+

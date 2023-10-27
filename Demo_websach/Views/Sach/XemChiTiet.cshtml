@@ -1,0 +1,22 @@
+﻿@model Demo_websach.Models.Book
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin chi tiết</h2>
+<div><img style="margin-left: 220px" src="@Url.Content("~/HinhAnhSP/" + Model.imgBOOK)" width="500" height="500" alt="Alternate Text" /></div>
+<div style="text-align:center; font-size:30px">@Model.BookName</div>
+<div style="text-align:center; font-size:30px"><span style="color:brown">Chủ đề: </span>@ViewBag.TenChuDe</div>
+<div style="text-align:center; font-size:30px"><span style="color:chocolate">Nhà xuất bản: </span>@ViewBag.NhaXuatBan</div>
+<div style="text-align:center; font-size:30px">@Model.MoTa</div>
+<div id="Gia"><span style="color:green; font-weight:100; font-size:30px; margin-left:350px">Đơn giá: </span><span style="font-size:30px" id="Gia">@string.Format("{0:0,0}", Model.Gia) VNĐ</span></div>
+<br />
+@using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = Model.BookID, @strURL = Request.Url.ToString() }))
+{
+    <input type="submit"  value="Mua hàng" id="btnGioHang" class="btn btn-primary" />
+
+}
+
+

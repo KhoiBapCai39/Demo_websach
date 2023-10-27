@@ -1,0 +1,148 @@
+﻿<!DOCTYPE htưml>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/assets/css/styleNguoiDung.css")
+    <script src="https://kit.fontawesome.com/2acd0adeee.js" crossorigin="anonymous"></script>
+</head>
+<body class="is-preload">
+
+        <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <h1><a href="index.html">BẠN VÀ SÁCH</a></h1>
+            <nav class="links">
+                <ul>
+                    <li><a href="@Url.Action("NguoiDungLayout", "Home")">Trang chủ</a></li>
+                    <li><a href="@Url.Action("DanhSachAllSanPham", "Home")">Sách</a></li>
+                    <li><a href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <!--Tim kiem-->
+            <div id="txtTimKiem">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "textBoxTimKiem", @placeholder = "Tìm kiêm...." })
+
+                }
+            </div>
+            <div id="divHinhAnhTimKiem">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+
+
+            <!--Dang ki dang nhap-->
+            <div class="DangKyDangNhap">
+                @Html.Action("GioHangPartial", "GioHang")
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                <a href="@Url.Action("DangNhap", "NguoiDung")">Đăng nhập</a>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <a href="@Url.Action("DangKy", "NguoiDung")">Đăng ký</a>
+            </div>
+
+            <div id="user"></div>
+        </header>
+
+
+        <!-- Main -->
+        <div id="main">
+
+            @RenderBody()
+            <!-- phân chia trang -->
+            <div id="divRight">
+                @RenderSection("NoiDungBenPhai", false)
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <ul class="actions pagination">
+                    <li><a href="" class="disabled button large previous">Trang trước</a></li>
+                    <li><a href="#" class="button large next">Trang kế tiếp</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="divLeft">
+            <!-- Sidebar trái -->
+            <section id="sidebar">
+
+                <!-- intro mở đầu -->
+                <section id="intro">
+                    <a href="#" class="logo"><img src="~/Content/imgbook/introsach.png" alt="" /></a>
+                    <header>
+                        <h2>Sách - Người bạn tri thức</h2>
+                    </header>
+                </section>
+
+                <!-- Thể loại -->
+                @*Chèn partialView thể loại*@
+                <section>
+                    <div class="mini-posts">
+                        @Html.Action("TheLoaiPartial", "TheLoai")
+                    </div>
+                </section>
+
+                <!-- Top  -->
+                <section>
+                    <div class="activity">
+                        @Html.Action("SachMoiPartial", "Sach")
+                    </div>
+                </section>
+
+                <!-- Nha xuat ban -->
+                <section class="blurb">
+                    <!--Action PartialView-->
+                    @Html.Action("NhaXuatBanPartial", "NhaXuatBan")
+                
+
+                </section>
+
+                <!-- Footer -->
+                <section id="footer">
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+                        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                </section>
+
+            </section>
+        </div>
+      
+    </div>
+
+        <!-- Scripts -->
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/Content/assets/js/jquery.min.js")
+        @Scripts.Render("~/Content/assets/js/brower.min.js")
+        @Scripts.Render("~/Content/assets/js/breakpoints.min.js")
+        @Scripts.Render("~/Content/assets/js/util.js")
+        @Scripts.Render("~/Content/assets/js/main.js")
+        @RenderSection("scripts", required: false)
+ </body>
+
+</html>
