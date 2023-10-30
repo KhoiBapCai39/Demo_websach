@@ -26,12 +26,9 @@ namespace Demo_websach.Models
         public Nullable<System.DateTime> NgayGiao { get; set; }
         public string TinhTrangDonHang { get; set; }
         public string DaThanhToan { get; set; }
-       
-
-
+    
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-
     }
 }

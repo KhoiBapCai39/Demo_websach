@@ -1,6 +1,7 @@
 ﻿
 @using Demo_websach.Models;
-@model List<Book>
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Book>
 
 <link href="~/Content/TrangChuSach.css" rel="stylesheet" />
 
@@ -35,7 +36,20 @@
                 }
 
                 <div id="DonGia" style="color:orange; text-align:center">
-                    <font color="Green">Giá: @item.Gia đ</font>
+                    <font color="Green">Giá: @String.Format("{0:0,0}", @item.Gia) VNĐ</font>
+                </div>
+
+                <div id="GioHang">
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = item.BookID, @strURL = Request.Url.ToString() }))
+                    {
+                        <style>
+                            #btnGioHang {
+                                margin-left: 85px;
+                            }
+                        </style>
+                        <input type="submit" value="Mua hàng" id="btnGioHang" class="btn btn-primary" />
+
+                    }
                 </div>
             </div>
         </div>
@@ -44,10 +58,25 @@
         {
             <div style="clear:both"></div>
         }
-    }
+     }
 
 
 </div>
 <div style="clear:both"></div>
+@*tạo link liên kết các trang*@
+@*Tạo 1 cái text, hiển thị trang. VD: ở trang 2, thì sẽ là 2/5*@
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("DanhSachAllSanPham", new { page = page })) @*Biểu thức lamda trỏ đến url.action*@
+</div>
+
+<style>
+    .MenuTrang li
+    {
+        font-size:20px;
+        display:inline
+    }
+</style>
 
 

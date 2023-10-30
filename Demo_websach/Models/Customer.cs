@@ -22,45 +22,46 @@ namespace Demo_websach.Models
             this.Orders = new HashSet<Order>();
             this.Reviews = new HashSet<Review>();
         }
-        [Display(Name = "Mã khách hàng")] //thuộc tính display dùng để đặt tên lại
-        [Required(ErrorMessage = "{0} không được để trống")] //kiểm tra rỗng
+        [Display(Name = "Mã khách hàng")] //đặt lại tên cho thuộc tính
         public int CustomerID { get; set; }
 
-        [Display(Name = "Họ tên")] //thuộc tính display dùng để đặt tên lại
-        [Required(ErrorMessage = "{0} không được để trống")] //kiểm tra rỗng
-        [StringLength(50, ErrorMessage ="Không quá 50 kí tự")] //kiểm tra chiều dài tối đa
-        [MinLength(10, ErrorMessage = "Ít nhất 10 kí tự")]
+
+        [Display(Name = "Tên khách hàng")]
+        [Required(ErrorMessage = "{0} không được để trống !")] //kiểm tra rỗng 
+        [StringLength(30, ErrorMessage = "Không quá 30 ký tự")] //kiểm tra chiều dài tối đa của đầu vào
+        [MinLength(5)]
         public string CustomerName { get; set; }
 
-        [Display(Name = "Email")] //thuộc tính display dùng để đặt tên lại
-        [Required(ErrorMessage = "{0} không được để trống")] //kiểm tra rỗng
-        [RegularExpression(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$", ErrorMessage = "Email không hợp lệ")]
-        [MinLength(10, ErrorMessage = "Ít nhất 10 kí tự")]
+
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "{0} không được để trống !")] //kiểm tra rỗng
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "{0} không hợp lệ ")]
         public string Email { get; set; }
 
-        [Display(Name = "Số điện thoại")] //thuộc tính display dùng để đặt tên lại
-        [Required(ErrorMessage = "{0} không được để trống")] //kiểm tra rỗng
-        [StringLength(11, ErrorMessage = "Không quá 11 kí tự")] //kiểm tra chiều dài tối đa
-        [MinLength(10, ErrorMessage = "Ít nhất 10 kí tự")]
+
+        [Display(Name = "Số điện thoại")]
+        [Required(ErrorMessage = "{0} không được để trống !")] //kiểm tra rỗng
+        [StringLength(11, ErrorMessage = "Không quá 11 ký tự")] 
+        [MinLength(9)]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Mật khẩu")] //thuộc tính display dùng để đặt tên lại
-        [Required(ErrorMessage = "{0} không được để trống")] //kiểm tra rỗng
-        [StringLength(50, ErrorMessage = "Không quá 50 kí tự")] //kiểm tra chiều dài tối đa
-        [MinLength(10, ErrorMessage = "Ít nhất 10 kí tự")]
+
+        [Display(Name = "Mật khẩu")]
+        [Required(ErrorMessage = "{0} không được để trống !")] //kiểm tra rỗng
+        [MinLength(8, ErrorMessage = "Mật khẩu phải tối thiểu là 8 ký tự")]
         public string MatKhau { get; set; }
 
-        [Display(Name = "Ngày sinh")] //thuộc tính display dùng để đặt tên lại
-        [Required(ErrorMessage = "{0} không được để trống")] //kiểm tra rỗng
-        [DisplayFormat(DataFormatString ="0:dd//MM//yyyy")] //định dạng dữ liệu
-        [DataType(DataType.Date)]
+
+        [Display(Name = "Ngày sinh")]
+        [DisplayFormat(DataFormatString ="{0:dd//MM//yyyy}")] //định dạng ngày tháng năm
         public Nullable<System.DateTime> NgaySinh { get; set; }
 
-        [Display(Name = "Địa chỉ")] //thuộc tính display dùng để đặt tên lại
-        [Required(ErrorMessage = "{0} không được để trống")] //kiểm tra rỗng
-        [StringLength(60, ErrorMessage = "Không quá 60 kí tự")] //kiểm tra chiều dài tối đa
-        [MinLength(15, ErrorMessage = "Ít nhất 15 kí tự")]
+
+        [Display(Name = "Địa chỉ")]
+        [Required(ErrorMessage = "{0} không được để trống !")] //kiểm tra rỗng
+        [StringLength(50, ErrorMessage = "Không quá 50 ký tự")] //kiểm tra chiều dài tối đa của đầu vào
         public string DiaChi { get; set; }
+
 
 
     
