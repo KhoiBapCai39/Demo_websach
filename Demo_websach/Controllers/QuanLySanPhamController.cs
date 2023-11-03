@@ -32,7 +32,7 @@ namespace Demo_websach.Controllers
         }
 
         [HttpPost]
-        public ActionResult ThemPost(Book book, HttpPostedFileBase fileUpload)
+        public ActionResult ThemMoi(Book book, HttpPostedFileBase fileUpload)
         {
             //lưu tên file
             var filename = Path.GetFileName(fileUpload.FileName);
@@ -43,13 +43,16 @@ namespace Demo_websach.Controllers
             //kiểm tra hình ảnh đã tồn tại chưa ?
             if(System.IO.File.Exists(path))
             {
-                ViewBag.ThongBao = "Hình ảnh đã tồn tài";
+                ViewBag.ThongBao = "Hình ảnh đã tồn tại !!!!!";
             }
             else
             {
                 //save vào đường dẫn, để lấy hình đưa vào thư mục của mình ( thư mục HinhAnhSP )
                 fileUpload.SaveAs(path);
-            }    
+            }
+            //đưa dữ liệu vào drop downlist
+            ViewBag.GenreID = new SelectList(db.Genres.ToList().OrderBy(n => n.GenreName), "GenreID", "GenreName");
+            ViewBag.PublisherID = new SelectList(db.Publishers.ToList().OrderBy(n => n.PublisherName), "PublisherID", "PublisherName");
             return View();
         }
     }
