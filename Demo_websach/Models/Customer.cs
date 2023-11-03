@@ -53,8 +53,10 @@ namespace Demo_websach.Models
 
 
         [Display(Name = "Ngày sinh")]
-        [DisplayFormat(DataFormatString ="{0:dd//MM//yyyy}")] //định dạng ngày tháng năm
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> NgaySinh { get; set; }
+
 
 
         [Display(Name = "Địa chỉ")]

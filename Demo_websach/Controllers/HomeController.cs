@@ -41,5 +41,9 @@ namespace Demo_websach.Controllers
             return View();
         }
 
+        public ActionResult LienHe()
+        {
+            return View();
+        }
     }
 }

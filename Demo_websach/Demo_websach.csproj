@@ -135,6 +135,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\NhaXuatBanController.cs" />
+    <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\SachController.cs" />
     <Compile Include="Controllers\TheLoaiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -168,6 +169,8 @@
       <DependentUpon>BookStoreDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\Metadata\Book.metadata.cs" />
+    <Compile Include="Models\Metadata\Customer.metadata.cs" />
     <Compile Include="Models\Order.cs">
       <DependentUpon>BookStoreDb.tt</DependentUpon>
     </Compile>
@@ -241,6 +244,7 @@
     <Content Include="Content\imgbook\truyenkieu.jpg" />
     <Content Include="Content\imgbook\vanhoc.png" />
     <Content Include="Content\imgbook\William-Shakespeare.jpg" />
+    <Content Include="Content\LienHeCss.css" />
     <Content Include="Content\NguoidungLayoutcss\fontawesome-all.min.css" />
     <Content Include="Content\NguoidungLayoutcss\NguoiDungCssLayout.css" />
     <Content Include="Content\PagedList.css" />
@@ -594,6 +598,9 @@
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\GioHang\SuaGioHang.cshtml" />
     <Content Include="Views\Shared\Admin_Layout.cshtml" />
+    <Content Include="Views\QuanLySanPham\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\ThemMoi.cshtml" />
+    <Content Include="Views\Home\LienHe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

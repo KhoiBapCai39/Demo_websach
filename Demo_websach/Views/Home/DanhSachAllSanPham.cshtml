@@ -72,11 +72,42 @@ Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageC
 </div>
 
 <style>
-    .MenuTrang li
-    {
-        font-size:20px;
-        display:inline
+    /* CSS cho phân trang */
+    .MenuTrang {
+        list-style: none; /* Loại bỏ dấu chấm mặc định của danh sách */
+        text-align: center; /* Căn giữa nội dung */
+        margin-top: 20px; /* Tạo khoảng cách phía trên phân trang */
     }
+
+        .MenuTrang li {
+            display: inline;
+            margin: 0 5px; /* Tạo khoảng cách giữa các phần tử li */
+        }
+
+        .MenuTrang a {
+            text-decoration: none; /* Loại bỏ đường link mặc định */
+            padding: 10px 15px; /* Tạo khoảng cách xung quanh số trang */
+            border: 1px solid #007bff; /* Đường viền xung quanh số trang */
+            border-radius: 20px; /* Bo góc nét hơn */
+            color: #007bff; /* Màu chữ cho số trang */
+        }
+
+        .MenuTrang .PagedList-CurrentPage {
+            background-color: #007bff; /* Màu nền cho trang hiện tại */
+            color: #fff; /* Màu chữ trang hiện tại */
+        }
+
+        /* CSS cho con số */
+        .MenuTrang a {
+            font-size: 20px; /* Kích thước chữ cho con số */
+        }
+
+            /* Hover state */
+            .MenuTrang a:hover {
+                background-color: #007bff; /* Màu nền khi hover */
+                color: #fff; /* Màu chữ khi hover */
+            }
+
 </style>
 
 
