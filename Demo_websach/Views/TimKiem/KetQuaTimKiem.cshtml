@@ -1,0 +1,111 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Demo_websach.Models.Book>
+
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/TrangChuSach.css" rel="stylesheet" />
+
+<h2>Kết quả tìm kiếm</h2>
+<div>@ViewBag.ThongBao</div>
+<div id="divBody">
+
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <div id="AnhBia">
+                <a href="@Url.Action("XemChiTiet", "Sach", new {MaSach = item.BookID})"> <img style="margin-left:70px" src="@Url.Content("~/HinhAnhSP/" + item.imgBOOK)" width="120" height="120" /></a>
+            </div>
+            <div id="ThongTin">
+
+                @*Miêu tả thông tin sách như tên và giá,...*@
+                @if (item.BookName.Length < 35)
+                {
+                    <div style="text-align:center" id="TenSach">
+                        <a href="@Url.Action("XemChiTiet", "Sach", new {MaSach = item.BookID})">@item.BookName</a>
+                    </div>
+                }
+                else
+                {
+                    <div id="TenSach" title="@item.BookName">@item.BookName.Substring(0, 35) ...</div>
+                }
+
+                <div id="DonGia" style="color:orange; text-align:center">
+                    <font color="Green">Giá: @String.Format("{0:0,0}", @item.Gia) VNĐ</font>
+                </div>
+
+                <div id="GioHang">
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = item.BookID, @strURL = Request.Url.ToString() }))
+                    {
+                        <style>
+                            #btnGioHang {
+                                margin-left: 85px;
+                            }
+                        </style>
+                        <input type="submit" value="Mua hàng" id="btnGioHang" class="btn btn-primary" />
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+
+
+</div>
+<div style="clear:both"></div>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page, @sTuKhoa=ViewBag.TuKhoa})) @*Biểu thức lamda trỏ đến url.action*@
+
+</div>
+<style>
+    /* CSS cho phân trang */
+    .MenuTrang {
+        list-style: none; /* Loại bỏ dấu chấm mặc định của danh sách */
+        text-align: center; /* Căn giữa nội dung */
+        margin-top: 20px; /* Tạo khoảng cách phía trên phân trang */
+    }
+
+        .MenuTrang li {
+            display: inline;
+            margin: 0 5px; /* Tạo khoảng cách giữa các phần tử li */
+        }
+
+        .MenuTrang a {
+            text-decoration: none; /* Loại bỏ đường link mặc định */
+            padding: 10px 15px; /* Tạo khoảng cách xung quanh số trang */
+            border: 1px solid #007bff; /* Đường viền xung quanh số trang */
+            border-radius: 20px; /* Bo góc nét hơn */
+            color: #007bff; /* Màu chữ cho số trang */
+        }
+
+        .MenuTrang .PagedList-CurrentPage {
+            background-color: #007bff; /* Màu nền cho trang hiện tại */
+            color: #fff; /* Màu chữ trang hiện tại */
+        }
+
+        /* CSS cho con số */
+        .MenuTrang a {
+            font-size: 20px; /* Kích thước chữ cho con số */
+        }
+
+            /* Hover state */
+            .MenuTrang a:hover {
+                background-color: #007bff; /* Màu nền khi hover */
+                color: #fff; /* Màu chữ khi hover */
+            }
+</style>
+
+

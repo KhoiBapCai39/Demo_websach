@@ -75,8 +75,8 @@
             </td>                       
             <td>
                 @Html.ActionLink("Chỉnh Sửa", "ChinhSua", new { @BookID = item.BookID }) |
-                @Html.ActionLink("Chi tiết", "ChiTiet", new { id = item.BookID }) |
-                @Html.ActionLink("Xóa", "Xoa", new { id = item.BookID })
+                @Html.ActionLink("Chi tiết", "ChiTiet", new { @BookID = item.BookID }) |
+                @Html.ActionLink("Xóa", "Xoa", new { @BookID = item.BookID })
             </td>                       
         </tr>
     }

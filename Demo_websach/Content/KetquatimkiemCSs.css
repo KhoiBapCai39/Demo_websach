@@ -1,0 +1,81 @@
+﻿/* Màu nền cho trang */
+body {
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Container cho nội dung */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Tiêu đề trang */
+h2 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* Bảng kết quả tìm kiếm */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+    .table th {
+        background-color: #555;
+        color: #fff;
+        padding: 10px;
+        text-transform: uppercase;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .table tr {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        margin: 10px 0;
+        background-color: #f7f7f7;
+    }
+
+    .table td {
+        flex-basis: calc(100% / 6); /* Chia bảng thành 6 cột (6 ô) */
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+/* Hình ảnh sách */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Giá sách */
+.table td:nth-child(5) {
+    font-weight: bold;
+    color: #ff9900;
+}
+
+/* Mô tả sách */
+.table td:last-child {
+    text-align: justify;
+    word-wrap: break-word;
+    max-width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 0 0 10px 10px;
+}

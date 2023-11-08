@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Demo_websach.Models;
 using PagedList;
 using PagedList.Mvc;
@@ -75,17 +76,17 @@ namespace Demo_websach.Controllers
             }    
             return View();
         }
-        [HttpGet]
+        //[HttpGet]
 
-        public ActionResult ChinhSua()
-        {
-            ViewBag.GenreId = new SelectList(db.Genres.ToList(), "GenreID", "GenreName");
-            ViewBag.PublisherId = new SelectList(db.Publishers.ToList(), "PublisherID", "PublisherName");//cho ID la tui viet hoa 2 chu luon a
-            return View();
-        }
+        //public ActionResult ChinhSua()
+        //{
+        //    ViewBag.GenreId = new SelectList(db.Genres.ToList(), "GenreID", "GenreName");
+        //    ViewBag.PublisherId = new SelectList(db.Publishers.ToList(), "PublisherID", "PublisherName");
+        //    return View();
+        //}
 
         //chỉnh sửa sản phẩm
-        [HttpPost]
+        [HttpGet]
         public ActionResult ChinhSua(int BookID)
         {
             //lấy ra đối tượng sách theo mã
@@ -96,9 +97,75 @@ namespace Demo_websach.Controllers
                 return null;
 
             }
-            ViewBag.GenreID = new SelectList(db.Genres.ToList().OrderBy(n => n.GenreName), "GenreID", "GenreName");
-            ViewBag.PublisherID = new SelectList(db.Publishers.ToList().OrderBy(n => n.PublisherName), "PublisherID", "PublisherName");
+            ViewBag.GenreID = new SelectList(db.Genres.ToList().OrderBy(n => n.GenreName), "GenreID", "GenreName", book.GenreID);
+            ViewBag.PublisherID = new SelectList(db.Publishers.ToList().OrderBy(n => n.PublisherName), "PublisherID", "PublisherName", book.PublisherID);
             return View(book);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ChinhSua(Book book, HttpPostedFileBase fileUpload)
+        {
+            
+
+            //Thêm vào cơ sở dữ liệu
+            if (ModelState.IsValid)
+            {
+ 
+
+                //thực hiện cập nhật trong model
+                db.Entry(book).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+            }
+            //đưa dữ liệu vào drop downlist
+            ViewBag.GenreID = new SelectList(db.Genres.ToList().OrderBy(n => n.GenreName), "GenreID", "GenreName", book.GenreID);
+            ViewBag.PublisherID = new SelectList(db.Publishers.ToList().OrderBy(n => n.PublisherName), "PublisherID", "PublisherName", book.PublisherID);
+
+            return View();
+        }
+
+        public ActionResult ChiTiet(int BookID)
+        {
+            //lấy ra đối tượng sách theo mã
+            Book book = db.Books.SingleOrDefault(n => n.BookID == BookID); //trả về 1 đối tượng sách thỏa mãn điều kiện này
+            if (book == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+
+            }
+            return View(book);
+        }
+
+        //Xóa sản phẩm
+        [HttpGet]
+        public ActionResult Xoa(int BookID)
+        {
+            //lấy ra đối tượng sách theo mã
+            Book book = db.Books.SingleOrDefault(n => n.BookID == BookID); //trả về 1 đối tượng sách thỏa mãn điều kiện này
+            if (book == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+
+            }
+            return View(book);
+        }
+        [HttpPost, ActionName("Xoa")]
+
+        public ActionResult XacNhanXoa(int BookID)
+        {
+            Book book = db.Books.SingleOrDefault(n=>n.BookID == BookID);
+            if (book == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+
+            }
+            db.Books.Remove(book);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
