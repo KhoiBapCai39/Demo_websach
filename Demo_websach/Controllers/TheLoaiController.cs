@@ -17,6 +17,7 @@ namespace Demo_websach.Controllers
             var lstTheloai = db.Genres.ToList();
             return PartialView(lstTheloai);
         }
+
         public ActionResult LayDsTheoChuDe(int genreId)
         {
             // Sử dụng Linq để lấy dữ liệu

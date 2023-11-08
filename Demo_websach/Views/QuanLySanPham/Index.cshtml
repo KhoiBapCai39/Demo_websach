@@ -72,12 +72,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MoTa)
-            </td>
+            </td>                       
             <td>
-                @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = item.BookID }) |
+                @Html.ActionLink("Chỉnh Sửa", "ChinhSua", new { @BookID = item.BookID }) |
                 @Html.ActionLink("Chi tiết", "ChiTiet", new { id = item.BookID }) |
                 @Html.ActionLink("Xóa", "Xoa", new { id = item.BookID })
-            </td>
+            </td>                       
         </tr>
     }
 

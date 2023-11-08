@@ -18,6 +18,8 @@ namespace Demo_websach.Controllers
 
             return PartialView(db.Publishers.OrderBy(x => x.PublisherName).ToList());  //orderby dùng để sort   
         }
+
+
         public ActionResult GetAllByNXB(int publisherId) //lấy các sách mà nhà xuất bản đó phát hành
         {
             // Sử dụng Linq để lấy dữ liệu

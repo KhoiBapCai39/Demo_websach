@@ -61,8 +61,9 @@ namespace Demo_websach.Controllers
             Customer cus = db.Customers.SingleOrDefault(n => n.Email == sEmail && n.MatKhau == sMatKhau); //giống điều kiện where, nếu email và mk thỏa mãn trong csdl thì đăng nhập thành công
             if (cus != null)
             {
-                ViewBag.ThongBao = "Đăng nhập thành công rồi nha bạn ơi "; 
+                ViewBag.ThongBao = "Đăng nhập thành công rồi nha bạn ơi ";
                 Session["Email"] = cus;  //lưu lại tài khoản khách hàng, session là kiểu dữu liệu object nên có thể lưu mọi thứ
+                Session["TenEmail"] = cus.Email;
                 return RedirectToAction("NguoiDungLayout", "Home");
             }
             ViewBag.ThongBao = "Email hoặc mật khẩu bạn vừa nhập không đúng !";
@@ -71,5 +72,17 @@ namespace Demo_websach.Controllers
 
 
         }
+
+        [HttpGet]
+        public ActionResult DangXuat()
+        {
+            // Hủy bỏ Session để đăng xuất người dùng
+            Session.Remove("TenEmail");
+
+        
+            return RedirectToAction("NguoiDungLayout", "Home"); 
+        }
+
+       
     }
 }

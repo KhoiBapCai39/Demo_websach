@@ -31,7 +31,6 @@ namespace Demo_websach.Models
             [Display(Name = "Mã nhà xuất bản")] //đặt lại tên cho thuộc tính
             public Nullable<int> PublisherID { get; set; }
 
-            [Required(ErrorMessage = " Không được để trống !")] //kiểm tra rỗng 
             [Display(Name = "Ảnh sách")] //đặt lại tên cho thuộc tính
             public string imgBOOK { get; set; }
 

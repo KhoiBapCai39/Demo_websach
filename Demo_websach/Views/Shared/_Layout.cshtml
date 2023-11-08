@@ -25,6 +25,17 @@
                     <li><a href="@Url.Action("LienHe", "Home")">Liên hệ</a></li>
                 </ul>
             </nav>
+            <style>
+                /* Sử dụng Flexbox để căn chỉnh các phần tử trên cùng một hàng */
+                .DangKyDangNhap {
+                    display: flex;
+                    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+                }
+
+                    .DangKyDangNhap p {
+                        margin-right: 10px; /* Khoảng cách phải giữa đoạn văn bản và biểu tượng */
+                    }
+            </style>
 
             <!--Tim kiem-->
             <div id="txtTimKiem">
@@ -44,10 +55,22 @@
             <!--Dang ki dang nhap-->
             <div class="DangKyDangNhap">
                 @Html.Action("GioHangPartial", "GioHang")
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                <a href="@Url.Action("DangNhap", "NguoiDung")">Đăng nhập</a>
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <a href="@Url.Action("DangKy", "NguoiDung")">Đăng ký</a>
+
+
+                @if (Session["TenEmail"] != null)
+                {
+                    <p>@Session["TenEmail"]</p>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <a href="@Url.Action("DangXuat", "NguoiDung")">Đăng xuất</a>
+                }
+                else
+                {
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <a href="@Url.Action("DangNhap", "NguoiDung")">Đăng nhập</a>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <a href="@Url.Action("DangKy", "NguoiDung")">Đăng ký</a>
+                }
+
             </div>
 
             <div id="user"></div>
